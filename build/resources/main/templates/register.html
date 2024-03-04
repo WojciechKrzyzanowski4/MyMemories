@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>login test</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <style media="screen">
+        *,
+        *:before,
+        *:after{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: #5e2390;
+            overflow-x: hidden;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #dd78d0;
+            border-radius: 10px;
+        }
+        .background{
+            width: 430px;
+            height: 520px;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            left: 50%;
+            top: 50%;
+        }
+        .background .shape{
+            height: 200px;
+            width: 200px;
+            position: absolute;
+
+        }
+        .shape:first-child{
+            background-color: #034ea2;
+            left: -80px;
+            top: -80px;
+        }
+        .shape:last-child{
+            background-color: #8b0d88;
+            right: -80px;
+            bottom: -80px;
+            height: 300px;
+            width: 300px;
+        }
+        form{
+            height: 650px;
+            width: 400px;
+            background-color: rgba(255,255,255,0.13);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+
+
+            padding: 50px 35px;
+        }
+        form *{
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+
+        }
+        form h3{
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: transparent;
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+            border-bottom: 2px solid white;
+        }
+        ::placeholder{
+            color: #e5e5e5;
+        }
+
+        input:focus{
+            border-color: pink;
+        }
+
+        button{
+            margin-top: 75px;
+            margin-bottom: 10px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.27);
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+        button:hover{
+            background-color: aquamarine;
+
+        }
+        span{
+            text-align:center;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+</div>
+<form
+        method="post"
+        role="form"
+        th:action="@{/register/save}"
+        th:object="${user}"
+>
+    <div class="header">
+        <h3>REGISTER</h3>
+    </div>
+    <div class="form-group mb-3">
+        <label class="form-label">Name</label>
+        <input
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Enter name"
+                th:field="*{name}"
+                type="text"
+        />
+        <p th:errors = "*{name}" class="text-danger"
+           th:if="${#fields.hasErrors('name')}"></p>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Email</label>
+        <input
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Enter email address"
+                th:field="*{email}"
+                type="email"
+        />
+        <p th:errors = "*{email}" class="text-danger"
+           th:if="${#fields.hasErrors('email')}"></p>
+    </div>
+
+    <div class="form-group mb-3">
+        <label class="form-label">Password</label>
+        <input
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Enter password"
+                th:field="*{password}"
+                type="password"
+        />
+        <p th:errors = "*{password}" class="text-danger"
+           th:if="${#fields.hasErrors('password')}"></p>
+    </div>
+    <div class="form-group">
+        <button class="button" type="submit">Register</button>
+        <span>Already registered? <a th:href="@{/login}">Login here</a></span>
+    </div>
+</form>
+</body>
+</html>

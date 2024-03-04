@@ -1,2 +1,2 @@
-# mymemories
-application for helpinig with mental health
+# MyMemories
+An application that will help with your mental health
