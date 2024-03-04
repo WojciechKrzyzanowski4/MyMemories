@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Display Image</title>
+</head>
+<body>
+<h2>Display Image</h2>
+<img th:src="'data:image/png;base64,' + ${srcStr64}" alt="Image">
+</body>
+</html>

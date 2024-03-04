@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Memory thingy</title>
+    <meta charset="UTF-8">
+    <title>Memory Details</title>
 </head>
 <body>
 
-<h2>Upload your image</h2>
-
-<form th:action="@{/upload}" method="post" enctype="multipart/form-data">
-    <input type="file" name="file" accept="image/*" required/>
-    <br/>
-    <button type="submit">Upload</button>
-</form>
-
-
-<div th:if="${param.success}">
-    your image has been processed
-</div>
-
+<h2>Memory Details</h2>
+<p th:text="${memory}"></p>
 
 </body>
 </html>

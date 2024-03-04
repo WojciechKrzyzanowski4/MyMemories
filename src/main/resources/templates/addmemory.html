@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Memory thingy</title>
+    <script src="addmemory/addmemory.js"></script>
+</head>
+<body>
+
+<h2>add your memory</h2>
+
+<form th:action="@{/addmemory/save}" method="post" enctype="multipart/form-data">
+    <label for="text">Memory Text:</label><br/>
+    <input type="text" id="text" name="text" required/><br/><br/>
+
+    <label for="file">Upload Image:</label><br/>
+    <input type="file" id="file" name="file" accept="image/*" required onchange="functionToDoShitNow(event)"/><br/><br/>
+
+    <button type="submit">Upload</button>
+</form>
+<div id="selectedImageDiv" style="display: none">
+    <h3>Selected Image</h3>
+    <img id="selectedImage" src = "#" alt="dupa dupa dupa"/>
+</div>
+
+<div th:if="${param.success}">
+    your image has been processed
+</div>
+
+<div th:if="${param.failure}">
+    your image has failed
+</div>
+<script>
+    function functionToDoShitNow(event){
+        var selectedFile = event.target.files[0];
+        var selectedImage = document.getElementById('selectedImage');
+
+        alert("wchodze");
+        if(!selectedFile.type.match('image.*')){
+            alert("Please select an image file.")
+            return;
+        }
+
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            selectedImage.src = event.target.result;
+            document.getElementById('selectedImageDiv').style.display = 'block';
+        };
+        reader.readAsDataURL(selectedFile);
+    }
+</script>
+</body>
+</html>

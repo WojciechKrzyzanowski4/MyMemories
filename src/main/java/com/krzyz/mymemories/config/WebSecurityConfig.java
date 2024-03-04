@@ -33,8 +33,10 @@ public class WebSecurityConfig {
                                 .requestMatchers("/home").permitAll()
                                 .requestMatchers("/register").permitAll()
                                 .requestMatchers("/register/save").permitAll()
-                                .requestMatchers("/memory").permitAll()
                                 .requestMatchers("/dashboard").authenticated()
+                                .requestMatchers("/memory").authenticated()
+                                .requestMatchers("/addmemory").authenticated()
+                                .requestMatchers("/image").permitAll()
                                 .anyRequest().permitAll()
 
                 ).formLogin(

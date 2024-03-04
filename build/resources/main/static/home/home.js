@@ -1,0 +1,1 @@
+//this is a piece of shit file that nobody will ever use because js in not a real language
