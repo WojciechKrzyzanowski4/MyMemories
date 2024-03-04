@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" href="../static/home/home.css"/>
     <title>Memory thingy</title>
     <script src="addmemory/addmemory.js"></script>
 </head>
@@ -17,9 +18,10 @@
 
     <button type="submit">Upload</button>
 </form>
-<div id="selectedImageDiv" style="display: none">
+<div id="selectedImageDiv"
+     style="display: none">
     <h3>Selected Image</h3>
-    <img id="selectedImage" src = "#" alt="dupa dupa dupa"/>
+    <img id="selectedImage" src="#" alt="No image found"/>
 </div>
 
 <div th:if="${param.success}">
@@ -29,24 +31,6 @@
 <div th:if="${param.failure}">
     your image has failed
 </div>
-<script>
-    function functionToDoShitNow(event){
-        var selectedFile = event.target.files[0];
-        var selectedImage = document.getElementById('selectedImage');
 
-        alert("wchodze");
-        if(!selectedFile.type.match('image.*')){
-            alert("Please select an image file.")
-            return;
-        }
-
-        var reader = new FileReader();
-        reader.onload = function(event) {
-            selectedImage.src = event.target.result;
-            document.getElementById('selectedImageDiv').style.display = 'block';
-        };
-        reader.readAsDataURL(selectedFile);
-    }
-</script>
 </body>
 </html>
